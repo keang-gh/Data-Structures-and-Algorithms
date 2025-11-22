@@ -17,19 +17,19 @@ struct Node
 
 Node* reverseLink(Node *head)
 {
-    Node *dummy_head=new Node;
+    Node *p = head;
+    Node *q = nullptr;
+    Node *temp = nullptr;
 
-    while(head!=nullptr)
+    while(p)
     {
-        Node *p = head->next_;
-        head->next_ = dummy_head->next_;
-        dummy_head->next_ = head;
-        head = p;
-    }
+        temp = p->next_;
+        p->next_ = q;
 
-    Node *res_head = dummy_head->next_;
-    delete dummy_head;
-    return res_head;
+        q = p;
+        p = temp;
+    }
+    return q;
 }
 
 void show(Node *head)
